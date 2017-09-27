@@ -202,6 +202,17 @@
                 height: 1em;
             }
 
+            .cell-container div {
+                display: block;
+                position: absolute;
+                max-width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                /* for vertical align of text */
+                line-height: 1.12em;
+            }
+
             /* visible content */
             .cell-value {
                 display: block;
