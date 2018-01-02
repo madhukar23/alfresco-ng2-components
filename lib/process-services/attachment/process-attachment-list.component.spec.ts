@@ -23,7 +23,6 @@ import { By } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { ProcessContentService } from '@alfresco/adf-core';
 import { Observable } from 'rxjs/Observable';
-
 import { ProcessAttachmentListComponent } from './process-attachment-list.component';
 
 describe('ProcessAttachmentListComponent', () => {
@@ -300,9 +299,7 @@ describe('ProcessAttachmentListComponent', () => {
         <adf-empty-list>
             <div adf-empty-list-header class="adf-empty-list-header">Custom header</div>
         </adf-empty-list>
-        // <div class="test-div">mansa</div>
     </adf-process-attachment-list>
-    // <div class="test-div1">mansa1</div>
        `
 })
 class CustomEmptyTemplateComponent {
@@ -330,7 +327,8 @@ describe('Custom CustomEmptyTemplateComponent', () => {
 
     it('should render the custom template', () => {
         fixture.detectChanges();
-        let title: any = fixture.nativeElement.querySelector('adf-process-attachment-list > .adf-empty-list-header');
-        expect(title).toBeDefined();
+        let title: any = fixture.debugElement.queryAll(By.css('[adf-empty-list-header]'));
+        expect(title.length).toBe(1);
+        expect(title[0].nativeElement.innerText).toBe('Custom header');
     });
 });
